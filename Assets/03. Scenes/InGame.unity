@@ -17981,13 +17981,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 3.5
+    m_Stiffness: 3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 4
+    m_Stiffness: 3.5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -48358,13 +48358,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 3.5
+    m_Stiffness: 3
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 4
+    m_Stiffness: 3.5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -50652,6 +50652,7 @@ GameObject:
   - component: {fileID: 2792218741677377007}
   - component: {fileID: 3311311802262757207}
   - component: {fileID: 3311311802262757206}
+  - component: {fileID: 3311311802262757208}
   m_Layer: 0
   m_Name: BoongBoong
   m_TagString: Untagged
@@ -50666,7 +50667,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3311311802262757205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 624c3104829d9fd449edf177fb1d92fb, type: 3}
   m_Name: 
@@ -50682,13 +50683,13 @@ MonoBehaviour:
   maxSpeed: 60
   currentSpeed: 0
   motorPower: 1000
-  brakePower: 10000
+  brakePower: 30000
   steeringCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.043563843
-      value: 60.020588
+      time: 0
+      value: 60
       inSlope: -0.4368388
       outSlope: -0.4368388
       tangentMode: 0
@@ -50696,8 +50697,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.055071402
     - serializedVersion: 3
-      time: 199.79672
-      value: 15.476885
+      time: 200
+      value: 15
       inSlope: -0.4406316
       outSlope: -0.4406316
       tangentMode: 0
@@ -50708,9 +50709,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   downForce: 500
-  currentGearState: 0
   currentRPM: 0
-  idleRPM: 500
+  idleRPM: 1000
   maxRPM: 8000
   currentGear: 0
   gearUpRPM: 6000
@@ -50722,8 +50722,58 @@ MonoBehaviour:
   - 0.015
   - 0.01
   - 0.008
-  pedalInput: 0
-  brakeInput: 0
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.03
+      outSlope: 0.03
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2000
+      value: 60
+      inSlope: 0.024999999
+      outSlope: 0.024999999
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4000
+      value: 100
+      inSlope: 0.005
+      outSlope: 0.005
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 6000
+      value: 80
+      inSlope: -0.02
+      outSlope: -0.02
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 8000
+      value: 20
+      inSlope: -0.03
+      outSlope: -0.03
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxEngineTorque: 1000
 --- !u!54 &3311311802262757207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50751,6 +50801,121 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3311311802262757208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311311802262757205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1277d64d128f8e249bbfe56cfbc0f04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontLeftWheelCollider: {fileID: 2716459194433326401}
+  frontRightWheelCollider: {fileID: 4795950753509531558}
+  rearLeftWheelCollider: {fileID: 3145262460487907379}
+  rearRightWheelCollider: {fileID: 1057494946652696340}
+  frontLeftWheelMesh: {fileID: 3794951909091841893}
+  frontRightWheelMesh: {fileID: 948405438458163541}
+  rearLeftWheelMesh: {fileID: 9188640839673444425}
+  rearRightWheelMesh: {fileID: 28636840437978986}
+  maxSpeed: 80
+  currentSpeed: 0
+  motorPower: 1000
+  brakePower: 30000
+  steeringCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 60
+      inSlope: -0.4368388
+      outSlope: -0.4368388
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.055071402
+    - serializedVersion: 3
+      time: 80
+      value: 15
+      inSlope: -0.4406316
+      outSlope: -0.4406316
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20378995
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  downForce: 500
+  currentGearState: 0
+  currentRPM: 0
+  idleRPM: 1000
+  maxRPM: 8000
+  currentGear: 0
+  gearUpRPM: 6000
+  gearDownRPM: 2000
+  gearRatio:
+  - 0.03
+  - 0.025
+  - 0.02
+  - 0.015
+  - 0.01
+  - 0.008
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.03
+      outSlope: 0.03
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2000
+      value: 60
+      inSlope: 0.024999999
+      outSlope: 0.024999999
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4000
+      value: 100
+      inSlope: 0.005
+      outSlope: 0.005
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 6000
+      value: 80
+      inSlope: -0.02
+      outSlope: -0.02
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 8000
+      value: 20
+      inSlope: -0.03
+      outSlope: -0.03
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxEngineTorque: 800
 --- !u!23 &3312006959455200478
 MeshRenderer:
   m_ObjectHideFlags: 0
