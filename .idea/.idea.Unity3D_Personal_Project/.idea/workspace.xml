@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8b45a4-7b90-4837-811d-80dfe14e1473" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/AFRC_Env_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/AFRC_Env_Mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col4.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col4.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col5.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00. External Assets/ARCADE - FREE Racing Car/Materials/Color Variations/AFRC_Mat_Col5.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00. External Assets/CartoonTrackSpielberg/Meshes/MATERIALS_SPIELBERG/GRAVEL_TRAP_SPIELBERG.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00. External Assets/CartoonTrackSpielberg/Meshes/MATERIALS_SPIELBERG/GRAVEL_TRAP_SPIELBERG.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +27,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Car/NeutralGear.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Minimap/MarkerController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -98,7 +106,8 @@
       <updated>1744590911726</updated>
       <workItem from="1744590914835" duration="4787000" />
       <workItem from="1744613648912" duration="31052000" />
-      <workItem from="1744762951338" duration="24631000" />
+      <workItem from="1744762951338" duration="24768000" />
+      <workItem from="1744949493563" duration="7590000" />
     </task>
     <servers />
   </component>

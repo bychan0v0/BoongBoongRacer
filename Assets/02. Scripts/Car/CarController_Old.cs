@@ -95,7 +95,7 @@ public class CarController_Old : MonoBehaviour
         }
         else if (pedalInput < 0)
         {
-            if (slipAngle < 120f && currentSpeed > 0.5f)
+            if (slipAngle < 120f && currentSpeed > 0.1f)
             {
                 currentGearState = GearState_Old.Brake;
             }
@@ -145,7 +145,7 @@ public class CarController_Old : MonoBehaviour
         }
         else if (currentGearState.Equals(GearState_Old.Brake))
         {
-            currentRPM = Mathf.Lerp(currentRPM, 0f, brakeInput * 0.5f);
+            currentRPM = Mathf.Lerp(currentRPM, idleRPM, brakeInput * 0.1f);
         }
         else
         {
