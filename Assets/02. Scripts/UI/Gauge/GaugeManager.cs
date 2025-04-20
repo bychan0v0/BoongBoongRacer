@@ -12,7 +12,6 @@ public class GaugeManager : MonoBehaviour
 
     [Header("UI")] 
     public RectTransform needle;
-    public Sprite neutralImage;
     public Sprite driveImage;
     public Sprite reverseImage;
     public Image gearImage;
@@ -24,7 +23,7 @@ public class GaugeManager : MonoBehaviour
     
     private void Start()
     {
-        gearImage.sprite = neutralImage;
+        gearImage.sprite = driveImage;
 
         niddleStart = 245f;
         niddleEnd = 475f;
@@ -41,9 +40,6 @@ public class GaugeManager : MonoBehaviour
         
         switch (player.currentGearState)
         {
-            case GearState_Old.Neutral:
-                gearImage.sprite = neutralImage;
-                break;
            case GearState_Old.Drive:
                gearImage.sprite = driveImage;
                break;

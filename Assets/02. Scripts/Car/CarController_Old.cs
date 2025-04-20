@@ -5,7 +5,6 @@ using UnityEngine;
 
 public enum GearState_Old
 {
-    Neutral,
     Drive,
     Brake,
     Reverse
@@ -41,34 +40,29 @@ public class CarController_Old : MonoBehaviour
     public float gearDownRPM;
     public float[] gearRatio;
     public AnimationCurve torqueCurve;
-    public float maxEngineTorque;
+    public float torqueRatio = 5000f;
 
     private float pedalInput;
+    private float idlePedalInput = 0.1f;
     private float brakeInput;
     private float steeringInput;
     private float slipAngle;
     private Vector3 velocityDirection;
-    private float torqueRatio = 5000f;
     
     private Rigidbody playerRb;
     private IGearStrategy gearStrategy;
-
-    public void SetGearStrategy(IGearStrategy newStrategy)
-    {
-        gearStrategy = newStrategy;
-    }
     
     private void Start()
     {
         playerRb = gameObject.GetComponent<Rigidbody>();
         
-        currentGearState = GearState_Old.Neutral;
+        currentGearState = GearState_Old.Drive;
         currentGear = 1;
     }
 
     private void Update()
     {
-        motorPower = CalculateRPMAndTorque();
+        motorPower = CalculateRPM();
         currentSpeed = playerRb.velocity.magnitude;
         
         UpdateInput();
@@ -104,10 +98,6 @@ public class CarController_Old : MonoBehaviour
                 currentGearState = GearState_Old.Reverse;
             }
         }
-        else
-        {
-            currentGearState = GearState_Old.Neutral;
-        }
         
         velocityDirection = playerRb.velocity.normalized;
         slipAngle = Vector3.Angle(transform.forward, velocityDirection);
@@ -127,8 +117,12 @@ public class CarController_Old : MonoBehaviour
     {
         if (currentSpeed < maxSpeed)
         {
-            rearLeftWheelCollider.motorTorque = motorPower * pedalInput;
-            rearRightWheelCollider.motorTorque = motorPower * pedalInput;    
+            float torqueToApply = 0f;
+            
+            torqueToApply = (pedalInput > 0f) ? motorPower * pedalInput : motorPower * idlePedalInput;
+            
+            rearLeftWheelCollider.motorTorque = torqueToApply;
+            rearRightWheelCollider.motorTorque = torqueToApply;    
         }
         else
         {
@@ -136,23 +130,37 @@ public class CarController_Old : MonoBehaviour
             rearRightWheelCollider.motorTorque = 0f;
         }
     }
-
-    private float CalculateRPMAndTorque()
+    
+    public float differentialRatio = 3.42f;
+    public float wheelRadius = 0.37f;
+    
+    private float CalculateRPM()
     {
-        if (currentGearState.Equals(GearState_Old.Drive))
+        float wheelBasedRPM = (currentSpeed / (2 * Mathf.PI * wheelRadius)) * 60f * gearRatio[currentGear - 1] * differentialRatio;
+        float targetRPM;
+        float t;
+
+        if (pedalInput > 0f)
         {
-            currentRPM = Mathf.Lerp(currentRPM, maxRPM, gearRatio[currentGear - 1] * pedalInput);
+            float rpmRange = maxRPM - wheelBasedRPM;
+            targetRPM = wheelBasedRPM + rpmRange * pedalInput;
+            t = gearRatio[currentGear - 1] * pedalInput * 0.005f;
         }
-        else if (currentGearState.Equals(GearState_Old.Brake))
+        else if (brakeInput > 0f)
         {
-            currentRPM = Mathf.Lerp(currentRPM, idleRPM, brakeInput * 0.1f);
+            targetRPM = wheelBasedRPM;
+            t = brakeInput;
         }
         else
         {
-            currentRPM = Mathf.Lerp(currentRPM, idleRPM, Time.deltaTime * 2f);
+            targetRPM = wheelBasedRPM;
+            t = Time.deltaTime * 2f;
         }
-            
-        return torqueCurve.Evaluate(currentRPM / maxRPM) * maxEngineTorque * gearRatio[currentGear - 1] * torqueRatio;
+
+        targetRPM = Mathf.Clamp(targetRPM, idleRPM, maxRPM);
+        currentRPM = Mathf.Lerp(currentRPM, targetRPM, t);
+        
+        return torqueCurve.Evaluate(currentRPM / maxRPM) * gearRatio[currentGear - 1] * torqueRatio;
     }
 
     private void UpdateRPMAndGear()
