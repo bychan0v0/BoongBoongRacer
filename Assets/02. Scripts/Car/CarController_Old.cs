@@ -9,6 +9,15 @@ public enum GearState_Old
     Reverse,
 }
 
+[System.Serializable]
+public class Gear
+{
+    public int level;
+    public float limitUp;
+    public float limitDown;
+    public float accelRatio;
+}
+
 public class CarController_Old : MonoBehaviour
 {
     [Header("Wheel Collider")]
@@ -54,6 +63,8 @@ public class CarController_Old : MonoBehaviour
     
     private Rigidbody playerRb;
     private IGearStrategy gearStrategy;
+
+    public Gear[] gears;
     
     private void Start()
     {
