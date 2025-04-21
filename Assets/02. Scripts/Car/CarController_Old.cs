@@ -6,8 +6,7 @@ using UnityEngine;
 public enum GearState_Old
 {
     Drive,
-    Brake,
-    Reverse
+    Reverse,
 }
 
 public class CarController_Old : MonoBehaviour
@@ -26,26 +25,30 @@ public class CarController_Old : MonoBehaviour
 
     [Header("Car Setting")]
     public float maxSpeed;
-    public float currentSpeed;
     public float motorPower;
     public float brakePower;
     public AnimationCurve steeringCurve;
     public float downForce;
     public GearState_Old currentGearState;
-    public float currentRPM;
     public float idleRPM;
     public float maxRPM;
-    public int currentGear;
     public float gearUpRPM;
     public float gearDownRPM;
     public float[] gearRatio;
     public AnimationCurve torqueCurve;
-    public float torqueRatio = 5000f;
-
-    private float pedalInput;
+    public float torqueRatio = 50000f;
+    
+    [Header("Input")]
+    public float pedalInput;
+    public float steeringInput;
+    public float currentSpeed;
+    public float currentRPM;
+    public int currentGear;
+    
+    private bool isUpShifting = false;
+    private bool isDownShifting = false;
     private float idlePedalInput = 0.1f;
     private float brakeInput;
-    private float steeringInput;
     private float slipAngle;
     private Vector3 velocityDirection;
     
@@ -80,9 +83,6 @@ public class CarController_Old : MonoBehaviour
 
     private void UpdateInput()
     {
-        pedalInput = Input.GetAxis("Vertical");
-        steeringInput = Input.GetAxis("Horizontal");
-
         if (pedalInput > 0)
         {
             currentGearState = GearState_Old.Drive;
@@ -91,7 +91,7 @@ public class CarController_Old : MonoBehaviour
         {
             if (slipAngle < 120f && currentSpeed > 0.1f)
             {
-                currentGearState = GearState_Old.Brake;
+                // 브레이크였던것
             }
             else
             {
@@ -115,6 +115,8 @@ public class CarController_Old : MonoBehaviour
 
     private void ApplyMotor()
     {
+        if (isUpShifting || isDownShifting) return;
+        
         if (currentSpeed < maxSpeed)
         {
             float torqueToApply = 0f;
@@ -144,17 +146,17 @@ public class CarController_Old : MonoBehaviour
         {
             float rpmRange = maxRPM - wheelBasedRPM;
             targetRPM = wheelBasedRPM + rpmRange * pedalInput;
-            t = gearRatio[currentGear - 1] * pedalInput * 0.005f;
+            t = gearRatio[currentGear - 1] * pedalInput * 0.01f;
         }
         else if (brakeInput > 0f)
         {
-            targetRPM = wheelBasedRPM;
-            t = brakeInput;
+            targetRPM = wheelBasedRPM * 0.5f;
+            t = brakeInput * 3f;
         }
         else
         {
-            targetRPM = wheelBasedRPM;
-            t = Time.deltaTime * 2f;
+            targetRPM = wheelBasedRPM * 0.5f;   
+            t = Time.deltaTime * 3f;
         }
 
         targetRPM = Mathf.Clamp(targetRPM, idleRPM, maxRPM);
@@ -165,17 +167,84 @@ public class CarController_Old : MonoBehaviour
 
     private void UpdateRPMAndGear()
     {
+        if (isUpShifting || isDownShifting) return;
+        
         if (currentRPM >= gearUpRPM && currentGear.Equals(gearRatio.Length) == false)
         {
-            currentRPM = gearDownRPM + 200f;
-            currentGear++;
+            StartCoroutine(GearUpCoroutine());
         }
-        else if (currentRPM <= gearDownRPM && currentGear.Equals(1) == false)
+        else if (currentRPM <= gearDownRPM && currentGear > 1)
         {
-            currentRPM = gearUpRPM - 200f;
-            currentGear--;
+            StartCoroutine(GearDownCoroutine());
         }
     }
+
+    private IEnumerator GearUpCoroutine()
+    {
+        isUpShifting = true;
+
+        rearLeftWheelCollider.motorTorque = 0f;
+        rearRightWheelCollider.motorTorque = 0f;
+        rearLeftWheelCollider.brakeTorque = 1000f;
+        rearRightWheelCollider.brakeTorque = 1000f;
+
+        float duration = 0.75f;
+        float elapsed = 0f;
+
+        float startRPM = currentRPM;
+        float targetRPM = gearDownRPM + 200f;
+
+        currentGear++;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            
+            currentRPM = Mathf.Lerp(startRPM, targetRPM, t * 2f);
+
+            yield return null;
+        }
+        
+        isUpShifting = false;
+        
+        rearLeftWheelCollider.brakeTorque = 0f;
+        rearRightWheelCollider.brakeTorque = 0f;
+    }
+    
+    private IEnumerator GearDownCoroutine()
+    {
+        isDownShifting = true;
+
+        rearLeftWheelCollider.motorTorque = 0f;
+        rearRightWheelCollider.motorTorque = 0f;
+        rearLeftWheelCollider.brakeTorque = 1000f;
+        rearRightWheelCollider.brakeTorque = 1000f;
+
+        float duration = 0.25f;
+        float elapsed = 0f;
+
+        float startRPM = currentRPM;
+        float targetRPM = gearUpRPM - 200f;
+        
+        currentGear--;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            currentRPM = Mathf.Lerp(startRPM, targetRPM, t * 2f);
+
+            yield return null;
+        }
+
+        isDownShifting = false;
+
+        rearLeftWheelCollider.brakeTorque = 0f;
+        rearRightWheelCollider.brakeTorque = 0f;
+    }
+
 
     private void ApplyBrake()
     {   

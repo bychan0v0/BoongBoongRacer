@@ -45,7 +45,7 @@ public class CarController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         currentGear = 1;
         
-        SetGearStrategy(new NeutralGear());
+        SetGearStrategy(new DriveGear());
     }
 
     private void Update()

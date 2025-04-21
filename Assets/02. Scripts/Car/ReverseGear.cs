@@ -14,7 +14,7 @@ public class ReverseGear : IGearStrategy
         }
         else if (Mathf.Approximately(pedalInput, 0f))
         {
-            car.SetGearStrategy(new NeutralGear());
+            
         }
     }
 

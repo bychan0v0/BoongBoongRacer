@@ -32,8 +32,6 @@ public class GaugeManager : MonoBehaviour
     private void Update()
     {
         float playerRPMRatio = player.currentRPM / player.maxRPM;
-        // float needleAngle = Mathf.LerpAngle(niddleStart, niddleEnd, playerRPMRatio);
-        // float needleAngle = playerRPMRatio * 230f + niddleStart;
         float needleAngle = Mathf.Lerp(niddleStart, niddleEnd, playerRPMRatio);
         
         needle.rotation = Quaternion.Euler(0, 180, needleAngle);

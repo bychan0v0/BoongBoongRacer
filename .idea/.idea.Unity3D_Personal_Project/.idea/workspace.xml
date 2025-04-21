@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8b45a4-7b90-4837-811d-80dfe14e1473" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/MinimapRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/MinimapRenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/BrakeGear.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/BrakeGear.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/DriveGear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/DriveGear.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/NeutralGear.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/NeutralGear.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/ReverseGear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/ReverseGear.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
     </list>
@@ -105,6 +111,7 @@
       <workItem from="1744949493563" duration="7590000" />
       <workItem from="1744981051618" duration="624000" />
       <workItem from="1745133297542" duration="6582000" />
+      <workItem from="1745196311900" duration="14109000" />
     </task>
     <servers />
   </component>
