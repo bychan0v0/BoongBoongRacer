@@ -1,101 +1,81 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AIPlayerInput : MonoBehaviour
+public class AutoSlowdownAIDriver : MonoBehaviour
 {
-    [Header("Sensor Settings")]
-    public Transform sensorOrigin;
-    public float frontSensorLength = 30f;
-    public float sideSensorLength = 15f;
-    public LayerMask sensorMask;
-
-    [Header("Vehicle Control")]
-    public CarController_Old carController;
-    public float maxSteerAngle = 30f;
-    public float maxSpeed = 40f;
-
-    [Header("Behavior Thresholds")]
-    public float obstacleAvoidanceThreshold = 6f;
-    public float forwardClearanceThreshold = 10f;
-
-    [Header("Waypoint Settings")]
+    [Header("Waypoints")]
     public Transform[] waypoints;
+    public float waypointReachDistance = 5f;
     private int currentWaypointIndex = 0;
-    public float lookAheadDistance = 5f;
 
-    private float targetPedal = 0f;
-    private float targetSteer = 0f;
+    [Header("Controller")]
+    public CarController_Old carController;
+
+    [Header("Speed Settings")]
+    public float maxSpeed = 40f;
+    public float minCornerSpeed = 10f;
+    public float brakeAggressiveness = 0.05f;
+
+    [Header("Steering")]
+    public float maxSteerAngle = 30f;
+    public float steeringSmoothing = 5f;
+    private float currentSteer = 0f;
 
     private void FixedUpdate()
     {
-        if (waypoints == null || waypoints.Length == 0 || carController == null) return;
+        if (waypoints == null || waypoints.Length < 3 || carController == null) return;
 
-        EvaluateDrivingIntent();      // 기본 목표 입력 계산
-        EvaluateSensorOverride();     // 센서 기반 보정
-        ApplyInputs();                // 최종 입력 반영
+        EvaluateDrivingIntent();
     }
 
-    private void EvaluateDrivingIntent()
+    void EvaluateDrivingIntent()
     {
-        // 현재 목표 웨이포인트 기준 조향 계산
-        Transform target = waypoints[currentWaypointIndex];
-        Vector3 toTarget = target.position - transform.position;
-        toTarget.y = 0f; // Y축 무시한 평면 거리 계산
+        // 1. 코너 곡률 분석
+        Vector3 dir1 = (waypoints[(currentWaypointIndex + 1) % waypoints.Length].position - waypoints[currentWaypointIndex].position).normalized;
+        Vector3 dir2 = (waypoints[(currentWaypointIndex + 2) % waypoints.Length].position - waypoints[(currentWaypointIndex + 1) % waypoints.Length].position).normalized;
 
-        Vector3 localTarget = transform.InverseTransformPoint(target.position);
-        float steerRaw = (localTarget.x / localTarget.magnitude);
-        targetSteer = Mathf.Clamp(steerRaw, -1f, 1f) * maxSteerAngle;
+        float cornerAngle = Vector3.Angle(dir1, dir2);
+        float severity = Mathf.InverseLerp(0f, 90f, cornerAngle);
+        float targetSpeed = Mathf.Lerp(maxSpeed, minCornerSpeed, severity);
 
-        // 속도 기반으로 페달 계산
-        float speedError = maxSpeed - carController.currentSpeed;
-        targetPedal = Mathf.Clamp(speedError * 0.05f, 0f, 1f);
+        // 2. 현재 속도와 비교해서 throttle/brake 계산
+        float currentSpeed = carController.currentSpeed;
+        float speedError = targetSpeed - currentSpeed;
 
-        // 웨이포인트 도달 판정
-        if (toTarget.magnitude < lookAheadDistance)
+        float throttle = 0f;
+        float brake = 0f;
+
+        if (speedError > 2f)
         {
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            throttle = 1f;
+            brake = 0f;
         }
-    }
-
-    private void EvaluateSensorOverride()
-    {
-        float left = CastSensor(-45f, sideSensorLength);
-        float right = CastSensor(45f, sideSensorLength);
-        float front = CastSensor(0f, frontSensorLength);
-
-        // 좌우 회피 조향 보정
-        float steerDelta = right - left;
-        float steerAdjust = Mathf.Clamp(steerDelta * 0.05f, -10f, 10f); // 약한 조향 보정
-        targetSteer += steerAdjust;
-
-        // 전방 감지 시 감속
-        if (front < forwardClearanceThreshold && carController.currentSpeed > 1f)
+        else if (speedError < -2f)
         {
-            float brakeStrength = Mathf.InverseLerp(forwardClearanceThreshold, 0f, front);
-            targetPedal = Mathf.Min(targetPedal, -brakeStrength); // 감속만 덮어씀
-        }
-    }
-
-    private float CastSensor(float angle, float length)
-    {
-        Vector3 dir = Quaternion.Euler(0, angle, 0) * transform.forward;
-        Ray ray = new Ray(sensorOrigin.position, dir);
-        if (Physics.Raycast(ray, out RaycastHit hit, length, sensorMask))
-        {
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
-            return hit.distance;
+            throttle = 0f;
+            brake = Mathf.Clamp01(-speedError * brakeAggressiveness);
         }
         else
         {
-            Debug.DrawRay(ray.origin, dir * length, Color.green);
-            return length;
+            throttle = 0.2f;
+            brake = 0f;
         }
-    }
 
-    private void ApplyInputs()
-    {
-        carController.pedalInput = targetPedal;
-        carController.steeringInput = targetSteer;
+        // 3. 조향 계산 및 부드럽게 보간
+        Vector3 toWaypoint = waypoints[(currentWaypointIndex + 1) % waypoints.Length].position - transform.position;
+        toWaypoint.y = 0f;
+        Vector3 localDir = transform.InverseTransformDirection(toWaypoint.normalized);
+        float targetSteer = Mathf.Clamp(localDir.x, -1f, 1f) * maxSteerAngle;
+
+        currentSteer = Mathf.Lerp(currentSteer, targetSteer, Time.fixedDeltaTime * steeringSmoothing);
+
+        carController.pedalInput = throttle;
+        carController.brakeInput = brake;
+        carController.steeringInput = currentSteer;
+
+        // 4. 웨이포인트 갱신
+        if (toWaypoint.magnitude < waypointReachDistance)
+        {
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+        }
     }
 }

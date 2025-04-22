@@ -50,6 +50,7 @@ public class CarController_Old : MonoBehaviour
     [Header("Input")]
     public float pedalInput;
     public float steeringInput;
+    public float brakeInput;
     public float currentSpeed;
     public float currentRPM;
     public int currentGear;
@@ -57,7 +58,6 @@ public class CarController_Old : MonoBehaviour
     private bool isUpShifting = false;
     private bool isDownShifting = false;
     private float idlePedalInput = 0.1f;
-    private float brakeInput;
     private float slipAngle;
     private Vector3 velocityDirection;
     
