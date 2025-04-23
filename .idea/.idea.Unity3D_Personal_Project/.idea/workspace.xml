@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +110,7 @@
       <workItem from="1745226883481" duration="3989000" />
       <workItem from="1745281439416" duration="13936000" />
       <workItem from="1745367821293" duration="19394000" />
+      <workItem from="1745407034387" duration="9997000" />
     </task>
     <servers />
   </component>

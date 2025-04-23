@@ -11,22 +11,83 @@ public class AutoSlowdownAIDriver : MonoBehaviour
     [Header("Controller")]
     public CarController_Old carController;
 
-    [Header("Speed Control")] 
+    [Header("Speed Control")]
     public float averageCornerAngle;
     public float minCornerAngle = 7f;
-    public float maxCornerAngle = 25f;   
+    public float maxCornerAngle = 25f;
     public float speedLimitForCorner = 10f;
     public int cornerLookaheadCount = 3;
+
+    [Header("Sensors")]
+    public Transform sensorOrigin;
+    public float frontRayLength = 8f;
+    public float angleRayLength = 6f;
+    public float sideCastRadius = 0.5f;
+    public float sideCastDistance = 2f;
+    public LayerMask obstacleMask;
+
+    private bool isAvoiding = false;
+    private bool obstacleAhead;
+    private bool obstacleLeft;
+    private bool obstacleRight;
+    private bool sideCollisionLeft;
+    private bool sideCollisionRight;
 
     void FixedUpdate()
     {
         if (waypoints == null || waypoints.Length < 2 || carController == null) return;
 
+        SenseEnvironment();
+
+        if (obstacleAhead || obstacleLeft || obstacleRight || sideCollisionLeft || sideCollisionRight)
+        {
+            isAvoiding = true;
+            HandleAvoidance();
+        }
+        else
+        {
+            isAvoiding = false;
+            FollowWaypoints();
+        }
+    }
+
+    void SenseEnvironment()
+    {
+        Vector3 origin = sensorOrigin.position;
+
+        // 전방 및 각도 레이캐스트
+        obstacleAhead = Physics.Raycast(origin, transform.forward, frontRayLength, obstacleMask);
+        obstacleLeft = Physics.Raycast(origin, Quaternion.Euler(0, -30, 0) * transform.forward, angleRayLength, obstacleMask);
+        obstacleRight = Physics.Raycast(origin, Quaternion.Euler(0, 30, 0) * transform.forward, angleRayLength, obstacleMask);
+
+        // 측면 충돌 감지
+        sideCollisionLeft = Physics.SphereCast(origin, sideCastRadius, -transform.right, out _, sideCastDistance, obstacleMask);
+        sideCollisionRight = Physics.SphereCast(origin, sideCastRadius, transform.right, out _, sideCastDistance, obstacleMask);
+    }
+
+    void HandleAvoidance()
+    {
+        float pedalInput = 0.5f;
+        float steerInput = 0f;
+
+        if (obstacleAhead)
+            pedalInput = -0.5f;
+
+        if (sideCollisionLeft || obstacleLeft)
+            steerInput = 0.5f;
+        else if (sideCollisionRight || obstacleRight)
+            steerInput = -0.5f;
+
+        carController.pedalInput = pedalInput;
+        carController.steeringInput = steerInput;
+    }
+
+    void FollowWaypoints()
+    {
         Vector3 currentPos = transform.position;
 
         // 코너 곡률 계산
         float totalCornerAngle = 0f;
-
         for (int i = 1; i <= cornerLookaheadCount; i++)
         {
             int idxA = (currentWaypointIndex + i) % waypoints.Length;
@@ -47,12 +108,10 @@ public class AutoSlowdownAIDriver : MonoBehaviour
         if (averageCornerAngle > minCornerAngle && carController.currentSpeed > speedLimitForCorner)
         {
             float cornerSeverity = Mathf.InverseLerp(minCornerAngle, maxCornerAngle, averageCornerAngle);
-            
             float speedOverLimit = carController.currentSpeed - speedLimitForCorner;
             float speedFactor = Mathf.InverseLerp(0f, carController.maxSpeed - speedLimitForCorner, speedOverLimit);
-
             float intensity = Mathf.Clamp01(cornerSeverity * speedFactor);
-            pedalInput = -Mathf.Lerp(0f, 1f, intensity); // 코너 각도 + 속도 초과량 기반 감속 강도
+            pedalInput = -Mathf.Lerp(0f, 1f, intensity);
         }
 
         // 조향 계산
@@ -77,5 +136,15 @@ public class AutoSlowdownAIDriver : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(waypoints[currentWaypointIndex].position, 1f);
+
+        if (sensorOrigin)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(sensorOrigin.position, transform.forward * frontRayLength);
+            Gizmos.DrawRay(sensorOrigin.position, Quaternion.Euler(0, -30, 0) * transform.forward * angleRayLength);
+            Gizmos.DrawRay(sensorOrigin.position, Quaternion.Euler(0, 30, 0) * transform.forward * angleRayLength);
+            Gizmos.DrawRay(sensorOrigin.position, -transform.right * sideCastDistance);
+            Gizmos.DrawRay(sensorOrigin.position, transform.right * sideCastDistance);
+        }
     }
 }

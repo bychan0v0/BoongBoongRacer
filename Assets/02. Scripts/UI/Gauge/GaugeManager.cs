@@ -20,6 +20,7 @@ public class GaugeManager : MonoBehaviour
     
     private float niddleStart;
     private float niddleEnd;
+    private float needleCurrentAngle;
     
     private void Start()
     {
@@ -31,22 +32,13 @@ public class GaugeManager : MonoBehaviour
 
     private void Update()
     {
-        float playerRPMRatio = player.currentRPM / player.maxRPM;
-        float needleAngle = Mathf.Lerp(niddleStart, niddleEnd, playerRPMRatio);
-        
-        needle.rotation = Quaternion.Euler(0, 180, needleAngle);
-        
-        switch (player.currentGearState)
-        {
-           case GearState_Old.Drive:
-               gearImage.sprite = driveImage;
-               break;
-           case GearState_Old.Reverse:
-               gearImage.sprite = reverseImage;
-               break;
-        }
-        
-        gearStageText.text = player.currentGear.ToString();
-        speedText.text = ((int)(player.currentSpeed * 3.6f)).ToString();
+        float rpmRatio = Mathf.Clamp01(player.currentRPM / player.maxRPM);
+        float targetAngle = Mathf.Lerp(niddleStart, niddleEnd, rpmRatio);
+        needleCurrentAngle = Mathf.Lerp(needleCurrentAngle, targetAngle, Time.deltaTime * 10f);
+        needle.rotation = Quaternion.Euler(0, 180, needleCurrentAngle);
+
+        gearImage.sprite = player.currentGearState == GearState_Old.Reverse ? reverseImage : driveImage;
+        gearStageText.text = player.currentGear > 0 ? player.currentGear.ToString() : "N";
+        speedText.text = Mathf.RoundToInt(player.currentSpeed * 3.6f).ToString();
     }
 }
