@@ -9,15 +9,6 @@ public enum GearState_Old
     Reverse,
 }
 
-[System.Serializable]
-public class Gear
-{
-    public int level;
-    public float limitUp;
-    public float limitDown;
-    public float accelRatio;
-}
-
 public class CarController_Old : MonoBehaviour
 {
     [Header("Wheel Collider")]
@@ -55,6 +46,9 @@ public class CarController_Old : MonoBehaviour
     public float currentRPM;
     public int currentGear;
     
+    public float differentialRatio = 3.42f;
+    public float wheelRadius = 0.37f;
+    
     private bool isUpShifting = false;
     private bool isDownShifting = false;
     private float idlePedalInput = 0.1f;
@@ -64,8 +58,6 @@ public class CarController_Old : MonoBehaviour
     private Rigidbody playerRb;
     private IGearStrategy gearStrategy;
 
-    public Gear[] gears;
-    
     private void Start()
     {
         playerRb = gameObject.GetComponent<Rigidbody>();
@@ -144,12 +136,9 @@ public class CarController_Old : MonoBehaviour
         }
     }
     
-    public float differentialRatio = 3.42f;
-    public float wheelRadius = 0.37f;
-    
     private float CalculateRPM()
     {
-        float wheelBasedRPM = (currentSpeed / (2 * Mathf.PI * wheelRadius)) * 60f * gearRatio[currentGear - 1] * differentialRatio;
+        float wheelBasedRPM = currentSpeed / (2 * Mathf.PI * wheelRadius) * 60f * gearRatio[currentGear - 1] * differentialRatio;
         float targetRPM;
         float t;
 

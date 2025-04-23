@@ -19,9 +19,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Car/NeutralGear.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Minimap/MarkerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/AiCotroller.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -106,7 +106,8 @@
       <workItem from="1745133297542" duration="6582000" />
       <workItem from="1745196311900" duration="16879000" />
       <workItem from="1745226883481" duration="3989000" />
-      <workItem from="1745281439416" duration="13805000" />
+      <workItem from="1745281439416" duration="13936000" />
+      <workItem from="1745367821293" duration="19394000" />
     </task>
     <servers />
   </component>

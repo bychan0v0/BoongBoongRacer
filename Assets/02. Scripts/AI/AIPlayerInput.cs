@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 public class AutoSlowdownAIDriver : MonoBehaviour
 {
@@ -10,72 +11,71 @@ public class AutoSlowdownAIDriver : MonoBehaviour
     [Header("Controller")]
     public CarController_Old carController;
 
-    [Header("Speed Settings")]
-    public float maxSpeed = 40f;
-    public float minCornerSpeed = 10f;
-    public float brakeAggressiveness = 0.05f;
+    [Header("Speed Control")] 
+    public float averageCornerAngle;
+    public float minCornerAngle = 7f;
+    public float maxCornerAngle = 25f;   
+    public float speedLimitForCorner = 10f;
+    public int cornerLookaheadCount = 3;
 
-    [Header("Steering")]
-    public float maxSteerAngle = 30f;
-    public float steeringSmoothing = 5f;
-    private float currentSteer = 0f;
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (waypoints == null || waypoints.Length < 3 || carController == null) return;
+        if (waypoints == null || waypoints.Length < 2 || carController == null) return;
 
-        EvaluateDrivingIntent();
-    }
+        Vector3 currentPos = transform.position;
 
-    void EvaluateDrivingIntent()
-    {
-        // 1. 코너 곡률 분석
-        Vector3 dir1 = (waypoints[(currentWaypointIndex + 1) % waypoints.Length].position - waypoints[currentWaypointIndex].position).normalized;
-        Vector3 dir2 = (waypoints[(currentWaypointIndex + 2) % waypoints.Length].position - waypoints[(currentWaypointIndex + 1) % waypoints.Length].position).normalized;
+        // 코너 곡률 계산
+        float totalCornerAngle = 0f;
 
-        float cornerAngle = Vector3.Angle(dir1, dir2);
-        float severity = Mathf.InverseLerp(0f, 90f, cornerAngle);
-        float targetSpeed = Mathf.Lerp(maxSpeed, minCornerSpeed, severity);
-
-        // 2. 현재 속도와 비교해서 throttle/brake 계산
-        float currentSpeed = carController.currentSpeed;
-        float speedError = targetSpeed - currentSpeed;
-
-        float throttle = 0f;
-        float brake = 0f;
-
-        if (speedError > 2f)
+        for (int i = 1; i <= cornerLookaheadCount; i++)
         {
-            throttle = 1f;
-            brake = 0f;
-        }
-        else if (speedError < -2f)
-        {
-            throttle = 0f;
-            brake = Mathf.Clamp01(-speedError * brakeAggressiveness);
-        }
-        else
-        {
-            throttle = 0.2f;
-            brake = 0f;
+            int idxA = (currentWaypointIndex + i) % waypoints.Length;
+            int idxB = (currentWaypointIndex + i + 1) % waypoints.Length;
+
+            Vector3 dirA = (waypoints[idxA].position - waypoints[(idxA - 1 + waypoints.Length) % waypoints.Length].position).normalized;
+            Vector3 dirB = (waypoints[idxB].position - waypoints[idxA].position).normalized;
+
+            float angle = Vector3.Angle(dirA, dirB);
+            totalCornerAngle += angle;
         }
 
-        // 3. 조향 계산 및 부드럽게 보간
-        Vector3 toWaypoint = waypoints[(currentWaypointIndex + 1) % waypoints.Length].position - transform.position;
-        toWaypoint.y = 0f;
-        Vector3 localDir = transform.InverseTransformDirection(toWaypoint.normalized);
-        float targetSteer = Mathf.Clamp(localDir.x, -1f, 1f) * maxSteerAngle;
+        averageCornerAngle = totalCornerAngle / cornerLookaheadCount;
 
-        currentSteer = Mathf.Lerp(currentSteer, targetSteer, Time.fixedDeltaTime * steeringSmoothing);
+        // 감속 여부 판단
+        float pedalInput = 1f;
 
-        carController.pedalInput = throttle;
-        carController.brakeInput = brake;
-        carController.steeringInput = currentSteer;
+        if (averageCornerAngle > minCornerAngle && carController.currentSpeed > speedLimitForCorner)
+        {
+            float cornerSeverity = Mathf.InverseLerp(minCornerAngle, maxCornerAngle, averageCornerAngle);
+            
+            float speedOverLimit = carController.currentSpeed - speedLimitForCorner;
+            float speedFactor = Mathf.InverseLerp(0f, carController.maxSpeed - speedLimitForCorner, speedOverLimit);
 
-        // 4. 웨이포인트 갱신
-        if (toWaypoint.magnitude < waypointReachDistance)
+            float intensity = Mathf.Clamp01(cornerSeverity * speedFactor);
+            pedalInput = -Mathf.Lerp(0f, 1f, intensity); // 코너 각도 + 속도 초과량 기반 감속 강도
+        }
+
+        // 조향 계산
+        Vector3 relative = transform.InverseTransformPoint(waypoints[currentWaypointIndex].position);
+        float targetAngle = Mathf.Atan2(relative.x, relative.z) * Mathf.Rad2Deg;
+        float steeringInput = Mathf.Clamp(targetAngle / 30f, -1f, 1f);
+
+        // 입력 적용
+        carController.pedalInput = pedalInput;
+        carController.steeringInput = steeringInput;
+
+        // 웨이포인트 갱신
+        if (relative.magnitude < waypointReachDistance)
         {
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (waypoints == null || waypoints.Length == 0) return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(waypoints[currentWaypointIndex].position, 1f);
     }
 }
