@@ -47,6 +47,9 @@ public class CarController_Old : MonoBehaviour
     public int currentGear;
 
     public GearState_Old currentGearState;
+    
+    [Header("Effect")]
+    public CarBrakeLight carBrakeLight;
 
     private bool isUpShifting = false;
     private bool isDownShifting = false;
@@ -120,6 +123,8 @@ public class CarController_Old : MonoBehaviour
         {
             brakeInput = 0f;
         }
+        
+        carBrakeLight.SetBrakeLight(brakeInput);
     }
 
     private void ApplyMotor()
