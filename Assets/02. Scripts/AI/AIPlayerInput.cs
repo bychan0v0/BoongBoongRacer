@@ -3,13 +3,13 @@ using UnityEngine;
 using System.Linq;
 using Random = UnityEngine.Random;
 
-public class AutoSlowdownAIDriver : MonoBehaviour
+public class AIPlayerInput : MonoBehaviour
 {
     [Header("Spline Points")]
     public Transform[] splinePoints;
     public float waypointReachDistance = 3f;
-    private int currentSplineIndex = 0;
-    private float progress = 0f;
+    public int currentSplineIndex = 0;
+    public float progress = 0f;
 
     [Header("Controller")]
     public CarController_Old carController;
