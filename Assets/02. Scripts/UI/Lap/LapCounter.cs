@@ -1,33 +1,58 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LapCounter : MonoBehaviour
 {
-    public int CurrentLap { get; private set; } = 0;
-    public int TotalLaps = 3;
+    public static LapCounter Instance;
+    
+    public int currentLap = 0;
+    public int maxLap;
 
-    private bool hasCrossedStart = false;
+    private Rigidbody rigidBody;
+    private bool canCountLap = true;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FinishLine"))
+        if (other.CompareTag("FinishTrigger") && canCountLap)
         {
-            if (!hasCrossedStart)
+            Vector3 carForward = rigidBody.velocity.normalized;
+            Vector3 finishForward = other.transform.right;
+            float dot = Vector3.Dot(carForward, finishForward);
+
+            if (dot > 0.5f) // 정방향 통과
             {
-                CurrentLap++;
-                hasCrossedStart = true;
-                Debug.Log($"Lap {CurrentLap} started via trigger for {gameObject.name}");
+                if (currentLap.Equals(maxLap))
+                {
+                    string finishTimer = TimerManager.Instance.GetLapTimer();
+                    
+                    TimerManager.Instance.UpdateFinishTimerUI(finishTimer);
+                }
+                
+                currentLap++;
+                LapManager.Instance.UpdateLapUI();
+                StartCoroutine(LapCooldown());
             }
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    
+    private IEnumerator LapCooldown()
     {
-        if (other.CompareTag("FinishLine"))
-        {
-            hasCrossedStart = false;
-        }
+        canCountLap = false;
+        yield return new WaitForSeconds(30f);
+        canCountLap = true;
     }
 }
 

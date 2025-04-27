@@ -7,6 +7,10 @@ public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
     public Transform[] splinePoints;
     public Transform playerTransform;
 
+    public LapCounter lapCounter;
+
+    public int currentSplineIndex { get; private set; } = 0;  // 추가!
+
     public float GetProgress()
     {
         int closestIdx = 0;
@@ -35,6 +39,8 @@ public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
             }
         }
 
+        currentSplineIndex = closestIdx;  // 이걸 매 프레임 갱신!
+
         return closestIdx + closestT;
     }
 
@@ -47,5 +53,16 @@ public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
             (-p0 + 3f * p1 - 3f * p2 + p3) * (t * t * t)
         );
     }
+
+    public int GetLap()
+    {
+        return lapCounter != null ? lapCounter.currentLap : 0;
+    }
+
+    public int GetCurrentSplineIndex()
+    {
+        return currentSplineIndex;
+    }
 }
+
 

@@ -115,16 +115,19 @@ public class AIPlayerInput : MonoBehaviour
         carController.steeringInput = steeringInput;
 
         float distanceToTarget = Vector3.Distance(currentPos, targetPos);
-        Vector3 toTarget = (targetPos - currentPos).normalized;
-        float forwardDot = Vector3.Dot(transform.forward, toTarget);
+        // Vector3 toTarget = (targetPos - currentPos).normalized;
+        // float forwardDot = Vector3.Dot(transform.forward, toTarget);
 
-        if (distanceToTarget < waypointReachDistance || forwardDot < 0f)
+        if (!escapeTriggered)
         {
-            progress += 0.1f;
-            if (progress >= 1f)
+            if (distanceToTarget < waypointReachDistance)
             {
-                progress = 0f;
-                currentSplineIndex = (currentSplineIndex + 1) % splinePoints.Length;
+                progress += 0.1f;
+                if (progress >= 1f)
+                {
+                    progress = 0f;
+                    currentSplineIndex = (currentSplineIndex + 1) % splinePoints.Length;
+                }
             }
         }
     }

@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IProgressProvider
 {
     float GetProgress();
+    int GetLap();
+    int GetCurrentSplineIndex();
 }

@@ -55,13 +55,19 @@ public class RankingManager : MonoBehaviour
 
     public List<IProgressProvider> GetSortedRanking()
     {
-        return progressProviders.OrderByDescending(p => p.GetProgress()).ToList();
+        return progressProviders
+            .OrderByDescending(p => p.GetLap())
+            .ThenByDescending(p => p.GetCurrentSplineIndex())
+            .ThenByDescending(p => p.GetProgress())
+            .ToList();
     }
+
 
     public int GetRankOf(GameObject car)
     {
         var sorted = GetSortedRanking();
         IProgressProvider provider = car.GetComponent<IProgressProvider>();
+        
         if (provider == null) return -1;
         return sorted.IndexOf(provider) + 1;
     }
