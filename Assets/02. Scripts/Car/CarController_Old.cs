@@ -24,6 +24,7 @@ public class CarController_Old : MonoBehaviour
     public Transform rearRightWheelMesh;
 
     [Header("Car Setting")]
+    public bool canDrive = false;
     public float maxSpeed;
     public float maxRPM;
     public float idleRPM = 1000f;
@@ -85,6 +86,14 @@ public class CarController_Old : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (canDrive == false)
+        {
+            pedalInput = 0f;
+            steeringInput = 0f;
+            
+            return;
+        }
+        
         UpdateInput();
         UpdateRPM();
         UpdateGear();

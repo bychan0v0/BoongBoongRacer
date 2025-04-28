@@ -6,19 +6,12 @@ using UnityEngine;
 
 public class LapCounter : MonoBehaviour
 {
-    public static LapCounter Instance;
-    
     public int currentLap = 0;
     public int maxLap;
 
     private Rigidbody rigidBody;
     private bool canCountLap = true;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
+    
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -38,11 +31,10 @@ public class LapCounter : MonoBehaviour
                 {
                     string finishTimer = TimerManager.Instance.GetLapTimer();
                     
-                    TimerManager.Instance.UpdateFinishTimerUI(finishTimer);
+                    TimerManager.Instance.UpdateFinishTimer(gameObject.name, finishTimer);
                 }
-                
+
                 currentLap++;
-                LapManager.Instance.UpdateLapUI();
                 StartCoroutine(LapCooldown());
             }
         }

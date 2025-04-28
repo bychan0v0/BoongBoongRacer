@@ -9,7 +9,7 @@ public class LapManager : MonoBehaviour
     public static LapManager Instance;
     
     public TMP_Text lapText;
-    public LapCounter lapCounter;
+    public MyLapCounter myLapCounter;
 
     private void Awake()
     {
@@ -18,8 +18,6 @@ public class LapManager : MonoBehaviour
 
     public void UpdateLapUI()
     {
-        if (lapCounter.currentLap > lapCounter.maxLap) return;
-        
-        lapText.text = lapCounter.currentLap + " / " + lapCounter.maxLap;
+        lapText.text = myLapCounter.currentLap + " / " + myLapCounter.maxLap;
     }
 }

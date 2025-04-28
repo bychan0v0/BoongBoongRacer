@@ -6,15 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8b45a4-7b90-4837-811d-80dfe14e1473" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/BackMirrorRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/BackMirrorRenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Timer/TimerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Timer/TimerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +24,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/4598f34b/Single.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/UI/Result/ResultManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -124,6 +126,7 @@
       <workItem from="1745656315395" duration="10399000" />
       <workItem from="1745700082262" duration="783000" />
       <workItem from="1745737820311" duration="6658000" />
+      <workItem from="1745799465913" duration="19880000" />
     </task>
     <servers />
   </component>

@@ -7,7 +7,9 @@ using TMPro;
 
 public class RankingManager : MonoBehaviour
 {
-    public GameObject[] allCars;
+    public static RankingManager Instance;
+    
+    public List<GameObject> allCars;
     public TMP_Text myPositionNum;
     public TMP_Text playerNum;
     public TMP_Text[] rankNums;
@@ -15,6 +17,11 @@ public class RankingManager : MonoBehaviour
     public GameObject[] rankUIObjects;
     
     private List<IProgressProvider> progressProviders = new List<IProgressProvider>();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -40,7 +47,7 @@ public class RankingManager : MonoBehaviour
             GameObject car = allCars.FirstOrDefault(c => c.GetComponent<IProgressProvider>() == provider);
             if (car == null) continue;
 
-            int uiIndex = Array.IndexOf(allCars, car);
+            int uiIndex = allCars.IndexOf(car);
             if (uiIndex >= 0 && uiIndex < rankUIObjects.Length)
             {
                 // 자식 오브젝트 순서 재배치

@@ -7,7 +7,7 @@ public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
     public Transform[] splinePoints;
     public Transform playerTransform;
 
-    public LapCounter lapCounter;
+    public MyLapCounter myLapCounter;
 
     public int currentSplineIndex { get; private set; } = 0;  // 추가!
 
@@ -56,7 +56,7 @@ public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
 
     public int GetLap()
     {
-        return lapCounter != null ? lapCounter.currentLap : 0;
+        return myLapCounter != null ? myLapCounter.currentLap : 0;
     }
 
     public int GetCurrentSplineIndex()
