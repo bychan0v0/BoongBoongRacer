@@ -70,7 +70,7 @@ public class TimerManager : MonoBehaviour
         myLapTimerText[i].text = GetMyLapTimer();
         isLapUpdated = true;
         
-        Invoke(nameof(UpdateUIIndex), 5f);
+        Invoke(nameof(UpdateUIIndex), 30f);
     }
 
     private void UpdateUIIndex()
@@ -113,6 +113,8 @@ public class TimerManager : MonoBehaviour
         countdownText.text = "0";
         yield return new WaitForSeconds(1f);
 
+        timerText.transform.parent.gameObject.SetActive(false);
+        countdownText.gameObject.SetActive(false);
         UpdateEndInfo();
     }
 

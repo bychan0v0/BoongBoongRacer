@@ -19,8 +19,8 @@ public class AIProgressTracker : MonoBehaviour, IProgressProvider
         return lapCounter != null ? lapCounter.currentLap : 0;
     }
     
-    public int GetCurrentSplineIndex()
+    public float GetPreciseProgress()
     {
-        return aiDriver.currentSplineIndex;
+        return aiDriver.GetPreciseProgress();
     }
 }

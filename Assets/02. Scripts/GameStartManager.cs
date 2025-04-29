@@ -6,7 +6,6 @@ using TMPro;
 public class GameStartManager : MonoBehaviour
 {
     public TMP_Text countdownText;
-    public GameObject[] allCars;
 
     public float countdownTime = 3f;
 
@@ -37,7 +36,7 @@ public class GameStartManager : MonoBehaviour
 
     private void EnableAllCars()
     {
-        foreach (var car in allCars)
+        foreach (var car in RankingManager.Instance.allCars)
         {
             CarController_Old carController = car.GetComponent<CarController_Old>();
             if (carController != null)

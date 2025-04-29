@@ -32,6 +32,12 @@ public class LapCounter : MonoBehaviour
                     string finishTimer = TimerManager.Instance.GetLapTimer();
                     
                     TimerManager.Instance.UpdateFinishTimer(gameObject.name, finishTimer);
+                    
+                    CarController_Old carController = gameObject.GetComponent<CarController_Old>();
+                    if (carController != null)
+                    {
+                        carController.canDrive = false;
+                    }
                 }
 
                 currentLap++;

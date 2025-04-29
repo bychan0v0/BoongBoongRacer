@@ -6,5 +6,5 @@ public interface IProgressProvider
 {
     float GetProgress();
     int GetLap();
-    int GetCurrentSplineIndex();
+    float GetPreciseProgress();
 }

@@ -64,11 +64,9 @@ public class RankingManager : MonoBehaviour
     {
         return progressProviders
             .OrderByDescending(p => p.GetLap())
-            .ThenByDescending(p => p.GetCurrentSplineIndex())
-            .ThenByDescending(p => p.GetProgress())
+            .ThenByDescending(p => p.GetPreciseProgress()) // <<< progress 대신 PreciseProgress
             .ToList();
     }
-
 
     public int GetRankOf(GameObject car)
     {
