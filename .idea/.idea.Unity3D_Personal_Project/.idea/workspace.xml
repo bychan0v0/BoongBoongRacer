@@ -6,25 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8b45a4-7b90-4837-811d-80dfe14e1473" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Camera/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Camera/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameStartManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/GameStartManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Timer/TimerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Timer/TimerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/BackMirrorRenderTexture.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/BackMirrorRenderTexture.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/CarRenderTexture.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/CarRenderTexture.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Green.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Green.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/MinimapRenderTexture.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/MinimapRenderTexture.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Red.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Red.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/SF Quartzite SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/SF Quartzite SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Unageo-Medium SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Unageo-Medium SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameStartManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameStartManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Sound.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/SoundManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/SoundManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/StartGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/StartGame.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Data/CarData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,6 +151,7 @@
       <workItem from="1745737820311" duration="6658000" />
       <workItem from="1745799465913" duration="19880000" />
       <workItem from="1745886532062" duration="13308000" />
+      <workItem from="1745972623011" duration="4597000" />
     </task>
     <servers />
   </component>
