@@ -12,7 +12,7 @@ public class LapCounter : MonoBehaviour
     private Rigidbody rigidBody;
     private bool canCountLap = true;
     
-    private void Start()
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
     }

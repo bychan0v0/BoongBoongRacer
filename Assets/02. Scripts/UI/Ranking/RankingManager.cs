@@ -9,9 +9,13 @@ public class RankingManager : MonoBehaviour
 {
     public static RankingManager Instance;
     
-    public List<GameObject> allCars;
+    public List<GameObject> allCars = new List<GameObject>();
     public TMP_Text myPositionNum;
     public TMP_Text playerNum;
+    
+    public TMP_Text playerNameText;
+    public TMP_Text playerRankText;
+    
     public TMP_Text[] rankNums;
     public TMP_Text[] nameTexts;
     public GameObject[] rankUIObjects;
@@ -21,45 +25,58 @@ public class RankingManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        foreach (GameObject car in allCars)
-        {
-            IProgressProvider provider = car.GetComponent<IProgressProvider>();
-            if (provider != null)
-                progressProviders.Add(provider);
-        }
-        
-        playerNum.text = "/ " + progressProviders.Count;
+        progressProviders.Clear();
     }
 
     private void Update()
     {
-        myPositionNum.text = GetRankOf(allCars[0]).ToString();
+        if (allCars == null || allCars.Count < 5) return;
 
         var sorted = GetSortedRanking();
+        GameObject playerCar = allCars[GameManager.Instance.selectedCarIndex];
+        IProgressProvider playerProvider = playerCar.GetComponent<IProgressProvider>();
+
+        int myRank = sorted.IndexOf(playerProvider);
+        myPositionNum.text = (myRank + 1).ToString();
+
+        if (playerRankText != null) playerRankText.text = (myRank + 1).ToString();
+        if (playerNameText != null) playerNameText.text = playerCar.name;
+
+        int uiSlot = 0; // AI UI 슬롯 인덱스
 
         for (int i = 0; i < sorted.Count; i++)
         {
             IProgressProvider provider = sorted[i];
             GameObject car = allCars.FirstOrDefault(c => c.GetComponent<IProgressProvider>() == provider);
-            if (car == null) continue;
+            if (car == null || car == playerCar) continue; // 플레이어는 제외
 
-            int uiIndex = allCars.IndexOf(car);
-            if (uiIndex >= 0 && uiIndex < rankUIObjects.Length)
+            if (uiSlot < rankUIObjects.Length)
             {
-                // 자식 오브젝트 순서 재배치
-                rankUIObjects[uiIndex].transform.SetSiblingIndex(i);
+                rankUIObjects[uiSlot].transform.SetSiblingIndex(i);
 
-                // 텍스트 갱신
-                rankNums[uiIndex].text = (i + 1).ToString();
-                nameTexts[uiIndex].text = car.name;
+                rankNums[uiSlot].text = (i + 1).ToString(); // 전체 순위 기준
+                nameTexts[uiSlot].text = car.name;
+
+                uiSlot++;
             }
         }
     }
+    
+    public void SetCars(List<GameObject> cars)
+    {
+        allCars = cars;
+        progressProviders.Clear();
 
+        foreach (GameObject car in allCars)
+        {
+            var provider = car.GetComponent<IProgressProvider>();
+            if (provider != null)
+            {
+                progressProviders.Add(provider);
+            }
+        }
+    }
+    
     public List<IProgressProvider> GetSortedRanking()
     {
         return progressProviders

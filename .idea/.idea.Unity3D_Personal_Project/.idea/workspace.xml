@@ -6,27 +6,41 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8b45a4-7b90-4837-811d-80dfe14e1473" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/BackMirrorRenderTexture.renderTexture" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/BackMirrorRenderTexture.renderTexture.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/CarRenderTexture.renderTexture" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/CarRenderTexture.renderTexture.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/MinimapRenderTexture.renderTexture" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/MinimapRenderTexture.renderTexture.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/SF Quartzite SDF.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/SF Quartzite SDF.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Unageo-Medium SDF.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Unageo-Medium SDF.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameStartManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameStartManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/IProgressProvider.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Sound.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/SoundManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/SoundManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Gray.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Gray.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Purple.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Purple.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Yellow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Yellow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/BackMirrorRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/BackMirrorRenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/CarRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/CarRenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/MinimapRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/MinimapRenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Camera/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Camera/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/DriveGear.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/DriveGear.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/ReverseGear.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/ReverseGear.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Data/CarData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Data/CarData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameManagement/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/GameManagement/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Minimap/MarkerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Minimap/MarkerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Result/ResultManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Result/ResultManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/StartGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/StartGame.unity" afterDir="false" />
     </list>
@@ -152,6 +166,7 @@
       <workItem from="1745799465913" duration="19880000" />
       <workItem from="1745886532062" duration="13308000" />
       <workItem from="1745972623011" duration="4597000" />
+      <workItem from="1746415546433" duration="20190000" />
     </task>
     <servers />
   </component>

@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class AIPlayerInput : MonoBehaviour
 {
     [Header("Spline Points")]
-    public Transform[] splinePoints;
+    private Transform[] splinePoints;
     public float waypointReachDistance = 3f;
     public int currentSplineIndex = 0;
     public float progress = 0f;
@@ -45,6 +45,11 @@ public class AIPlayerInput : MonoBehaviour
     private float avoidancePedalInput = 0f;
     private bool escapeTriggered = false;
 
+    public void SetSplinePoints(Transform[] sps)
+    {
+        splinePoints = sps;
+    }
+    
     private void FixedUpdate()
     {
         if (splinePoints == null || splinePoints.Length < 4 || carController == null) return;
@@ -215,6 +220,12 @@ public class AIPlayerInput : MonoBehaviour
     
     public float GetPreciseProgress()
     {
+        if (splinePoints == null)
+        {
+            Debug.LogWarning($"[PlayerProgressTracker] spline is null on {gameObject.name}");
+            return 0f;
+        }
+        
         Vector3 carPos = transform.position;
     
         Vector3 p0 = splinePoints[(currentSplineIndex - 1 + splinePoints.Length) % splinePoints.Length].position;

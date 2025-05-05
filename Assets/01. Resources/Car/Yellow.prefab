@@ -209,13 +209,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 3.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 2.5
+    m_Stiffness: 4
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -300,7 +300,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: ebfdd5a04cc8eca4a9c1b4ff170ee29c, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -757,13 +757,9 @@ GameObject:
   - component: {fileID: 8022053211817048901}
   - component: {fileID: 3998591233741755711}
   - component: {fileID: 7405903302628715166}
-  - component: {fileID: 1403869502542243426}
-  - component: {fileID: 4395476398042502181}
   - component: {fileID: 2595656632744236768}
-  - component: {fileID: 4887923485827845664}
-  - component: {fileID: 6844346813689589827}
   m_Layer: 0
-  m_Name: Racing Car Yellow
+  m_Name: Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,7 +773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6777694012422115985}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -798,7 +794,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6777694012422115985}
   serializedVersion: 4
-  m_Mass: 1000
+  m_Mass: 800
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: -0.5, z: 0}
@@ -838,7 +834,7 @@ MonoBehaviour:
   rearLeftWheelMesh: {fileID: 2222350468809881393}
   rearRightWheelMesh: {fileID: 3024893712071594598}
   canDrive: 0
-  maxSpeed: 60
+  maxSpeed: 56
   maxRPM: 9000
   idleRPM: 1000
   gearUpRPM: 6000
@@ -973,8 +969,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  brakePower: 5000
-  downForce: 500
+  brakePower: 4500
+  downForce: 1000
   pedalInput: 0
   steeringInput: 0
   brakeInput: 0
@@ -996,35 +992,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 3998591233741755711}
---- !u!114 &1403869502542243426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777694012422115985}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2c144fca91ab4f4b817419e5700fe5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  splinePoints: []
-  playerTransform: {fileID: 2316414664413200984}
-  myLapCounter: {fileID: 4395476398042502181}
---- !u!114 &4395476398042502181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777694012422115985}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912aeb282b40f7643a969fdd2a10b1f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLap: 0
-  maxLap: 3
 --- !u!114 &2595656632744236768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,112 +1004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4920339fb80b86f4ab8ca3e767fa3c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splinePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   waypointReachDistance: 10
   currentSplineIndex: 0
   progress: 0
@@ -1150,46 +1011,18 @@ MonoBehaviour:
   minCornerAngle: 25
   maxCornerAngle: 40
   speedLimitForCorner: 25
-  earlyBrakingDistance: 55
+  earlyBrakingDistance: 60
   cornerLookaheadCount: 3
   lateralOffset: 2
   maxLateralOffset: 4
   offsetSmooth: 2
-  sensorOrigin: {fileID: 0}
+  sensorOrigin: {fileID: 6198670987358733824}
   detectRange: 6
   sideRange: 3
   carMask:
     serializedVersion: 2
     m_Bits: 128
   maxSteerAngle: 15
---- !u!114 &4887923485827845664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777694012422115985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f566405d85950438511df3573c3688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiDriver: {fileID: 2595656632744236768}
-  lapCounter: {fileID: 6844346813689589827}
---- !u!114 &6844346813689589827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777694012422115985}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3bb361829e409a48ac51c4e846f26f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLap: 0
-  maxLap: 3
 --- !u!1 &7524508339198581684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,8 +1311,8 @@ GameObject:
   - component: {fileID: 356414140900377924}
   - component: {fileID: 2120319202658447021}
   m_Layer: 0
-  m_Name: First Camera
-  m_TagString: MainCamera
+  m_Name: Front Camera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1657,13 +1490,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 3.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 2.5
+    m_Stiffness: 4
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

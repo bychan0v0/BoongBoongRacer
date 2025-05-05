@@ -18,9 +18,15 @@ public class AIProgressTracker : MonoBehaviour, IProgressProvider
     {
         return lapCounter != null ? lapCounter.currentLap : 0;
     }
-    
+
     public float GetPreciseProgress()
     {
+        if (aiDriver == null)
+        {
+            Debug.LogWarning($"[AIProgressTracker] aiDriver is null on {gameObject.name}");
+            return 0f;
+        }
+
         return aiDriver.GetPreciseProgress();
     }
 }

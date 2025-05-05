@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public class GaugeManager : MonoBehaviour
 {
+    public static GaugeManager Instance;
+    
     [Header("Player")]
-    public CarController_Old player;
+    private CarController_Old player;
 
     [Header("UI")] 
     public RectTransform needle;
@@ -21,7 +23,12 @@ public class GaugeManager : MonoBehaviour
     private float niddleStart;
     private float niddleEnd;
     private float needleCurrentAngle;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         gearImage.sprite = driveImage;
@@ -40,5 +47,10 @@ public class GaugeManager : MonoBehaviour
         gearImage.sprite = player.currentGearState == GearState_Old.Reverse ? reverseImage : driveImage;
         gearStageText.text = player.currentGear > 0 ? player.currentGear.ToString() : "N";
         speedText.text = Mathf.RoundToInt(player.currentSpeed * 3.6f).ToString();
+    }
+    
+    public void SetTarget(GameObject target)
+    {
+        player = target.GetComponent<CarController_Old>();
     }
 }

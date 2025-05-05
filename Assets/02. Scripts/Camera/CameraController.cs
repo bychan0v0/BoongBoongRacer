@@ -5,22 +5,30 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Camera mainCamera;
-    public Camera firstCamera;
+    public static CameraController Instance;
     
-    public Transform player;
+    public Camera mainCamera;
+    private Camera frontCamera;
+    private Camera backMirrorCamera;
+    
+    public RenderTexture backMirrorTexture;
+    
     public Vector3 offset;
     public float speed;
     
+    private Transform player;
     private Rigidbody playerRb;
 
-    private void Start()
+    private void Awake()
     {
-        mainCamera.enabled = true;
-        firstCamera.enabled = false;
-        
-        playerRb = player.GetComponent<Rigidbody>();
+        Instance = this;
     }
+
+    // private void Start()
+    // {
+    //     mainCamera.enabled = true;
+    //     frontCamera.enabled = false;
+    // }
 
     private void Update()
     {
@@ -32,6 +40,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (frontCamera.Equals(null) || backMirrorCamera.Equals(null)) return;
+        
         Vector3 playerForward = (playerRb.velocity + player.transform.forward).normalized;
         
         transform.position = Vector3.Lerp(
@@ -41,17 +51,44 @@ public class CameraController : MonoBehaviour
         transform.LookAt(player);
     }
 
+    public void SetTarget(Transform target)
+    {
+        player = target;
+        playerRb = player.GetComponent<Rigidbody>();
+        
+        var cameras = player.GetComponentsInChildren<Camera>(true);
+        
+        foreach (var cam in cameras)
+        {
+            cam.gameObject.SetActive(true);
+            
+            if (cam.name == "Front Camera")
+            {
+                frontCamera = cam;
+            }
+            else if (cam.name == "BackMirror Camera")
+            {
+                backMirrorCamera = cam;
+                backMirrorCamera.targetTexture = backMirrorTexture;
+            }
+        }
+        
+        mainCamera.enabled = true;
+        frontCamera.enabled = false;
+        backMirrorCamera.enabled = true;
+    }
+    
     private void ChangeCamera()
     {
         if (mainCamera.enabled)
         {
             mainCamera.enabled = false;
-            firstCamera.enabled = true;
+            frontCamera.enabled = true;
         }
         else
         {
             mainCamera.enabled = true;
-            firstCamera.enabled = false;
+            frontCamera.enabled = false;
         }
     }
 }

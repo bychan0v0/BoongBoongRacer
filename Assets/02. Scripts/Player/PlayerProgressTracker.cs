@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
 {
-    public Transform[] splinePoints;
+    private Transform[] splinePoints;
     public Transform playerTransform;
-
     public MyLapCounter myLapCounter;
 
     public int currentSplineIndex { get; private set; } = 0;  // 추가!
 
+    public void SetSplinePoints(Transform[] sps)
+    {
+        splinePoints = sps;
+    }
+    
     private void Update()
     {
         GetProgress();
@@ -66,6 +70,12 @@ public class PlayerProgressTracker : MonoBehaviour, IProgressProvider
     
     public float GetPreciseProgress()
     {
+        if (splinePoints == null)
+        {
+            Debug.LogWarning($"[PlayerProgressTracker] spline is null on {gameObject.name}");
+            return 0f;
+        }   
+        
         Vector3 carPos = transform.position;
     
         Vector3 p0 = splinePoints[(currentSplineIndex - 1 + splinePoints.Length) % splinePoints.Length].position;
