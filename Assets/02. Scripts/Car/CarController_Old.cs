@@ -130,6 +130,7 @@ public class CarController_Old : MonoBehaviour
         }
         else
         {
+            pedalInput = 0.05f;
             brakeInput = 0f;
         }
         

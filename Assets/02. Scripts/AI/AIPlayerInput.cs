@@ -259,37 +259,37 @@ public class AIPlayerInput : MonoBehaviour
         return closestT;
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     if (splinePoints == null || splinePoints.Length < 4) return;
-    //
-    //     Gizmos.color = Color.cyan;
-    //     for (int i = 0; i < splinePoints.Length; i++)
-    //     {
-    //         Vector3 p0 = splinePoints[(i - 1 + splinePoints.Length) % splinePoints.Length].position;
-    //         Vector3 p1 = splinePoints[i % splinePoints.Length].position;
-    //         Vector3 p2 = splinePoints[(i + 1) % splinePoints.Length].position;
-    //         Vector3 p3 = splinePoints[(i + 2) % splinePoints.Length].position;
-    //
-    //         Vector3 prevPoint = p1;
-    //         for (float t = 0; t < 1f; t += 0.1f)
-    //         {
-    //             Vector3 point = CatmullRom(p0, p1, p2, p3, t);
-    //             Gizmos.DrawLine(prevPoint, point);
-    //             prevPoint = point;
-    //         }
-    //     }
-    //
-    //     if (sensorOrigin)
-    //     {
-    //         Gizmos.color = Color.red;
-    //         Vector3 origin = sensorOrigin.position;
-    //         Gizmos.DrawRay(origin - transform.right * 0.75f, transform.forward * detectRange);
-    //         Gizmos.DrawRay(origin + transform.right * 0.75f, transform.forward * detectRange);
-    //         Gizmos.DrawRay(origin, Quaternion.Euler(0, -30f, 0) * transform.forward * detectRange);
-    //         Gizmos.DrawRay(origin, Quaternion.Euler(0, 30f, 0) * transform.forward * detectRange);
-    //         Gizmos.DrawRay(origin, -transform.right * sideRange);
-    //         Gizmos.DrawRay(origin, transform.right * sideRange);
-    //     }
-    // }
+    private void OnDrawGizmos()
+    {
+        if (splinePoints == null || splinePoints.Length < 4) return;
+    
+        Gizmos.color = Color.cyan;
+        for (int i = 0; i < splinePoints.Length; i++)
+        {
+            Vector3 p0 = splinePoints[(i - 1 + splinePoints.Length) % splinePoints.Length].position;
+            Vector3 p1 = splinePoints[i % splinePoints.Length].position;
+            Vector3 p2 = splinePoints[(i + 1) % splinePoints.Length].position;
+            Vector3 p3 = splinePoints[(i + 2) % splinePoints.Length].position;
+    
+            Vector3 prevPoint = p1;
+            for (float t = 0; t < 1f; t += 0.1f)
+            {
+                Vector3 point = CatmullRom(p0, p1, p2, p3, t);
+                Gizmos.DrawLine(prevPoint, point);
+                prevPoint = point;
+            }
+        }
+    
+        if (sensorOrigin)
+        {
+            Gizmos.color = Color.red;
+            Vector3 origin = sensorOrigin.position;
+            Gizmos.DrawRay(origin - transform.right * 0.75f, transform.forward * detectRange);
+            Gizmos.DrawRay(origin + transform.right * 0.75f, transform.forward * detectRange);
+            Gizmos.DrawRay(origin, Quaternion.Euler(0, -30f, 0) * transform.forward * detectRange);
+            Gizmos.DrawRay(origin, Quaternion.Euler(0, 30f, 0) * transform.forward * detectRange);
+            Gizmos.DrawRay(origin, -transform.right * sideRange);
+            Gizmos.DrawRay(origin, transform.right * sideRange);
+        }
+    }
 }

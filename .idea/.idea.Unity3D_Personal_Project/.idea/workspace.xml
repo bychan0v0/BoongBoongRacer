@@ -6,43 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8b45a4-7b90-4837-811d-80dfe14e1473" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3D_Personal_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Blue.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Blue.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Gray.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Gray.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Purple.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Purple.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Red.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Red.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Yellow.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/Car/Racing Car Yellow.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/BackMirrorRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/BackMirrorRenderTexture.renderTexture" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/CarRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/CarRenderTexture.renderTexture" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/MinimapRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Resources/RenderTexture/MinimapRenderTexture.renderTexture" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIPlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/AI/AIProgressTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Camera/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Camera/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/DriveGear.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/DriveGear.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/IGearStrategy.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/ReverseGear.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/ReverseGear.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Data.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Data/CarData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Data/CarData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/GameManagement/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/GameManagement/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerProgressTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Gauge/GaugeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/LapCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Lap/MyLapCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Minimap/MarkerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Minimap/MarkerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Car/CarController_Old.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Ranking/RankingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/UI/Result/ResultManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/UI/Result/ResultManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/InGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Scenes/StartGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Scenes/StartGame.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +133,8 @@
       <workItem from="1745886532062" duration="13308000" />
       <workItem from="1745972623011" duration="4597000" />
       <workItem from="1746415546433" duration="20190000" />
+      <workItem from="1746514415717" duration="4972000" />
+      <workItem from="1746547438030" duration="3108000" />
     </task>
     <servers />
   </component>

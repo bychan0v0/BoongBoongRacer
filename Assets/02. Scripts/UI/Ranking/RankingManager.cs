@@ -80,8 +80,8 @@ public class RankingManager : MonoBehaviour
     public List<IProgressProvider> GetSortedRanking()
     {
         return progressProviders
-            .OrderByDescending(p => p.GetLap())
-            .ThenByDescending(p => p.GetPreciseProgress()) // <<< progress 대신 PreciseProgress
+            .OrderByDescending(p => p.GetLap()) // 현재 랩 수
+            .ThenByDescending(p => p.GetPreciseProgress()) // 현재 경로상의 위치 (스플라인 기반)
             .ToList();
     }
 
